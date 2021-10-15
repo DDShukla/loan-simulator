@@ -1,0 +1,33 @@
+scalar Date
+
+type Loan{
+initialAmount: Float
+interestRate: Float
+startDate: Date
+payments: [payment]
+}
+
+type payment{
+amount: Float
+date: Date
+}
+
+type Query {
+ getBalance(effectiveDate: Date):Float
+}
+
+type Mutation {
+   initiateLoan(loanInput: createLoanInput):String
+   addPayment(paymentInput: addPaymentInput):String
+}
+
+input createLoanInput {
+initialAmount: Float
+interestRate: Float
+startDate: Date
+}
+
+input addPaymentInput {
+amount: Float
+date: Date
+}
