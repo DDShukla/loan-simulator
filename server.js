@@ -21,10 +21,11 @@ async function startApolloServer(typeDefs, resolvers) {
 	console.log(`🚀 Server ready at http://localhost:9000${server.graphqlPath}`);
 }
 
-const typeDefs = gql(fs.readFileSync("./src/Schema.graphql", {encoding: "utf8"}));
+const typeDefs = gql(fs.readFileSync("./src/schema.graphql", {encoding: "utf8"}));
 const resolvers = require("./src/resolvers");
 
 startApolloServer(typeDefs, resolvers);
+
 cacheProvider.start(function (err) {
 	if (err) console.error(err);
 });

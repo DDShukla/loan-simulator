@@ -54,7 +54,7 @@ describe("effective balance calculation with payments", () => {
 			]
 		};
 		var effectiveDate = "2021-01-11";
-		expect(interestService.getEffectiveBalance(loan, effectiveDate)).toBe(4.11);
+		expect(interestService.getEffectiveBalance(loan, effectiveDate)).toBe(4.12);
 	});
 	test("effective balance after payment in parts", () => {
 		var loan = {
@@ -69,5 +69,21 @@ describe("effective balance calculation with payments", () => {
 		};
 		var effectiveDate = "2021-01-09";
 		expect(interestService.getEffectiveBalance(loan, effectiveDate)).toBe(12.33);
+	});
+});
+
+describe("when total balance is paid", () => {
+
+	test("effective balance after next day full payment", () => {
+		var loan = {
+			initialAmount : 1000,
+			interestRate: 36.5,
+			startDate: "2021-01-01",
+			payments: [
+				{ amount:1180, date:"2021-07-01"}
+			]
+		};
+		var effectiveDate = "2021-12-31";
+		expect(interestService.getEffectiveBalance(loan, effectiveDate)).toBe(1.18);
 	});
 });

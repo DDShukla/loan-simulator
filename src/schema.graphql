@@ -13,12 +13,12 @@ date: Date
 }
 
 type Query {
- getBalance(effectiveDate: Date):Float
+ getBalance(effectiveDate: Date): Float
 }
 
 type Mutation {
-   initiateLoan(loanInput: createLoanInput):String
-   addPayment(paymentInput: addPaymentInput):String
+   initiateLoan(loanInput: createLoanInput): String
+   addPayment(paymentInput: addPaymentInput): String
 }
 
 input createLoanInput {
